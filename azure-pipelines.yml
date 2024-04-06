@@ -26,12 +26,19 @@ jobs:
     displayName: NuGet restore
     inputs:
       solution: $(BuildParameters.solution)
+#  - task: VSBuild@1
+#    displayName: Build solution *\.sln
+ #   inputs:
+  #    solution: '\*.sln'
+   #   platform: 'Any CPU'
+    #  configuration: 'Release'
   - task: VSBuild@1
-    displayName: Build solution *\.sln
-    inputs:
-      solution: '\*.sln'
+    displayName: Build solution
+    inputs: 
+      solution: $(BuildParameters.solution)
       platform: 'Any CPU'
       configuration: 'Release'
+
   - task: NuGetCommand@2
     displayName: NuGet pack
     inputs:
