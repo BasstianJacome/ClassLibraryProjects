@@ -51,13 +51,7 @@ jobs:
         !\obj\**
       platform: $(BuildPlatform)
       configuration: $(BuildConfiguration)
-  - task: PublishSymbols@2
-    displayName: Publish symbols path
-    continueOnError: True
-    inputs:
-      SearchPattern: '\bin\\*.pdb'
-      PublishSymbols: false
-      SymbolServerType: TeamServices
+
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     condition: succeededOrFailed()
